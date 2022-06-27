@@ -2,7 +2,7 @@ GEGL Fog
 =========
 
 GEGL Fog Effect
-
+![image preview](pasted_image405.png)
 
 
 ## Compiling and Installing
