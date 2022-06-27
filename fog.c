@@ -64,6 +64,11 @@ property_int (height, _("Height"), 1536)
     ui_meta     ("axis", "y")
 
 
+property_double (opacity, _("Opacity"), 1.0)
+    description (_("Global opacity value that is always used on top of the optional auxiliary input buffer."))
+    value_range (0.6, 2.2)
+    ui_range    (0.6, 2.0)
+
 #else
 
 #define GEGL_OP_META
@@ -75,7 +80,7 @@ property_int (height, _("Height"), 1536)
 static void attach (GeglOperation *operation)
 {
   GeglNode *gegl = operation->node;
-  GeglNode *input, *output, *plasma, *gray, *c2a, *color, *gaus;
+  GeglNode *input, *output, *plasma, *gray, *c2a, *color, *gaus, *opacity;
 
   input    = gegl_node_get_input_proxy (gegl, "input");
   output   = gegl_node_get_output_proxy (gegl, "output");
@@ -102,9 +107,13 @@ static void attach (GeglOperation *operation)
                                   "operation", "gegl:gaussian-blur",
                                   NULL);
 
+ opacity = gegl_node_new_child (gegl,
+                                  "operation", "gegl:opacity",
+                                  NULL);
 
 
-  gegl_node_link_many (input, plasma, gray, c2a, color, gaus, output, NULL);
+
+  gegl_node_link_many (input, plasma, gray, c2a, color, gaus, opacity, output, NULL);
 
 
 
@@ -128,7 +137,7 @@ static void attach (GeglOperation *operation)
  
     gegl_operation_meta_redirect (operation, "height", plasma, "height");
 
-
+    gegl_operation_meta_redirect (operation, "opacity", opacity, "value");
 
 
 
