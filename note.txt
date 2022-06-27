@@ -1,0 +1,1 @@
+GEGL FOG needs to be built and put in /gegl-0.4/plug-ins.  Linux Users have the option to use custom binaries
