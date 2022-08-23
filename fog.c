@@ -80,7 +80,7 @@ property_double (opacity, _("Opacity"), 1.0)
 static void attach (GeglOperation *operation)
 {
   GeglNode *gegl = operation->node;
-  GeglNode *input, *output, *plasma, *gray, *c2a, *color, *gaus, *opacity;
+  GeglNode *input, *output, *plasma, *gray, *c2a, *color, *gaus, *over, *opacity;
 
   input    = gegl_node_get_input_proxy (gegl, "input");
   output   = gegl_node_get_output_proxy (gegl, "output");
@@ -111,9 +111,14 @@ static void attach (GeglOperation *operation)
                                   "operation", "gegl:opacity",
                                   NULL);
 
+ over = gegl_node_new_child (gegl,
+                                  "operation", "gegl:over",
+                                  NULL);
 
 
-  gegl_node_link_many (input, plasma, gray, c2a, color, gaus, opacity, output, NULL);
+  gegl_node_connect_from (over, "aux", opacity, "output");
+  gegl_node_link_many (input, over, output, NULL);
+  gegl_node_link_many (input, plasma, gray, c2a, color, gaus, opacity, NULL);
 
 
 
