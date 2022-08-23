@@ -162,7 +162,7 @@ gegl_op_class_init (GeglOpClass *klass)
     "title",       _("Fog or Cloud Effect"),
     "categories",  "Generic",
     "reference-hash", "45eaaakk52185001x2001b2hc",
-    "description", _("Create a fog or cloud effect using GEGL. For edits directly on top of the image without layers use the normal or other blending options. If the image is very large or long you need to manually adjust the width and height of the pixels. "
+    "description", _("Create a fog or cloud effect using GEGL. If the image is above 2048x1536 you need to manually adjust the width and height of the pixels "
                      ""),
     NULL);
 }
