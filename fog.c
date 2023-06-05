@@ -22,14 +22,14 @@
 
 #ifdef GEGL_PROPERTIES
 
-property_double (turbulence, _("Turbulence"), 1.0)
+property_double (turbulence, _("Turbulence of Fog"), 1.0)
     description (_("Fog Levels"))
     value_range (0.0, 2.6)
 
 
 property_seed (seed, _("Random seed"), rand)
 
-property_double (transparency, _("Transparency threshold"), 0.1)
+property_double (transparency, _("Isolate Fog patches"), 0.1)
     description(_("Reduce Fog."))
     value_range (0.0, 0.5)
 
@@ -48,26 +48,27 @@ property_color (value, _("Color"), "transparent")
     ui_meta     ("role", "color-primary")
 
 
-property_int    (width, _("Width"), 2048)
+property_int    (width, _("Width"), 1024)
     description (_("Width of the generated buffer"))
     value_range (0, G_MAXINT)
     ui_range    (0, 4096)
     ui_meta     ("unit", "pixel-distance")
     ui_meta     ("axis", "x")
+    ui_meta     ("role", "output-extent")
 
-
-property_int (height, _("Height"), 1536)
+property_int (height, _("Height"), 768)
     description(_("Height of the generated buffer"))
     value_range (0, G_MAXINT)
     ui_range    (0, 4096)
     ui_meta     ("unit", "pixel-distance")
     ui_meta     ("axis", "y")
+    ui_meta     ("role", "output-extent")
 
 
 property_double (opacity, _("Opacity"), 1.0)
     description (_("Global opacity value that is always used on top of the optional auxiliary input buffer."))
-    value_range (0.6, 2.2)
-    ui_range    (0.6, 2.0)
+    value_range (0.6, 1.5)
+    ui_range    (0.6, 1.5)
 
 #else
 
@@ -162,7 +163,7 @@ gegl_op_class_init (GeglOpClass *klass)
     "title",       _("Fog or Cloud Effect"),
     "categories",  "Generic",
     "reference-hash", "45eaaakk52185001x2001b2hc",
-    "description", _("Create a fog or cloud effect using GEGL. If the image is above 2048x1536 you need to manually adjust the width and height of the pixels "
+    "description", _("Create a fog or cloud effect using GEGL. "
                      ""),
     NULL);
 }
