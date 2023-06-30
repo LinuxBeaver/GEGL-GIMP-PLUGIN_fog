@@ -17,6 +17,17 @@
  * 2022 GEGL Fog Beaver (This was inspired by the existing script fu Gimp Filter. But not copied from its code.)
  */
 
+/*
+GEGL Graph to test without installing. I DON'T KNOW HOW TO MAKE IT FULL SCREEN IN GRAPH MODE. I think Gimp is instructing gegl:plasma to render to canvas size.
+The plugin doesn't have this problem. 
+
+
+plasma 
+ turbulence=2 
+seed=4 gray  color-to-alpha color-overlay value=#8aed61
+gaussian-blur std-dev-x=0 std-dev-y=0
+opacity value=0.9 */
+
 #include "config.h"
 #include <glib/gi18n-lib.h>
 
@@ -123,27 +134,15 @@ static void attach (GeglOperation *operation)
 
 
 
-
-
-  gegl_operation_meta_redirect (operation, "gaus", gaus, "std-dev-x");
-
-  gegl_operation_meta_redirect (operation, "gaus", gaus, "std-dev-y");
-
-  gegl_operation_meta_redirect (operation, "turbulence", plasma, "turbulence");
-
-  gegl_operation_meta_redirect (operation, "seed", plasma, "seed");
-
-    gegl_operation_meta_redirect (operation, "value", color, "value");
- 
-    gegl_operation_meta_redirect (operation, "transparency", c2a, "transparency-threshold");
-
- 
-    gegl_operation_meta_redirect (operation, "width", plasma, "width");
-
- 
-    gegl_operation_meta_redirect (operation, "height", plasma, "height");
-
-    gegl_operation_meta_redirect (operation, "opacity", opacity, "value");
+gegl_operation_meta_redirect (operation, "gaus", gaus, "std-dev-x");
+gegl_operation_meta_redirect (operation, "gaus", gaus, "std-dev-y");
+gegl_operation_meta_redirect (operation, "turbulence", plasma, "turbulence");
+gegl_operation_meta_redirect (operation, "seed", plasma, "seed");
+gegl_operation_meta_redirect (operation, "value", color, "value");
+gegl_operation_meta_redirect (operation, "transparency", c2a, "transparency-threshold");
+gegl_operation_meta_redirect (operation, "width", plasma, "width");
+gegl_operation_meta_redirect (operation, "height", plasma, "height");
+gegl_operation_meta_redirect (operation, "opacity", opacity, "value");
 
 
 
