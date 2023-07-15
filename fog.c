@@ -130,7 +130,7 @@ static void attach (GeglOperation *operation)
 
   gegl_node_connect_from (over, "aux", opacity, "output");
   gegl_node_link_many (input, over, output, NULL);
-  gegl_node_link_many (input, plasma, gray, c2a, color, gaus, opacity, NULL);
+  gegl_node_link_many (plasma, gray, c2a, color, gaus, opacity, NULL);
 
 
 
