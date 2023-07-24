@@ -164,6 +164,8 @@ gegl_op_class_init (GeglOpClass *klass)
     "reference-hash", "45eaaakk52185001x2001b2hc",
     "description", _("Create a fog or cloud effect using GEGL. "
                      ""),
+    "gimp:menu-path", "<Image>/Filters/Render/Fun",
+    "gimp:menu-label", _("Fog..."),
     NULL);
 }
 
