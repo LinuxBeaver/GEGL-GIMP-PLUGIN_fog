@@ -158,7 +158,7 @@ gegl_op_class_init (GeglOpClass *klass)
   operation_class->attach = attach;
 
   gegl_operation_class_set_keys (operation_class,
-    "name",        "gegl:fog",
+    "name",        "lb:fog",
     "title",       _("Fog or Cloud Effect"),
     "categories",  "Generic",
     "reference-hash", "45eaaakk52185001x2001b2hc",
