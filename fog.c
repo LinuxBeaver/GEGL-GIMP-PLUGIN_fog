@@ -19,11 +19,11 @@
 
 /*
 GEGL Graph to test without installing. I DON'T KNOW HOW TO MAKE IT FULL SCREEN IN GRAPH MODE. I think Gimp is instructing gegl:plasma to render to canvas size.
-The plugin doesn't have this problem. 
+The plugin doesn't have this problem.
 
 
-plasma 
- turbulence=2 
+plasma
+ turbulence=2
 seed=4 gray  color-to-alpha color-overlay value=#8aed61
 gaussian-blur std-dev-x=0 std-dev-y=0
 opacity value=0.9 */
@@ -44,7 +44,7 @@ property_double (transparency, _("Isolate Fog patches"), 0.1)
     description(_("Reduce Fog."))
     value_range (0.0, 0.5)
 
- 
+
 property_double (gaus, _("Blur"), 0.0)
    description (_("mild gaussian blur"))
    value_range (0.0, 1.0)
@@ -54,7 +54,7 @@ property_double (gaus, _("Blur"), 0.0)
    ui_meta     ("axis", "x")
 
 
-property_color (value, _("Color"), "transparent")
+property_color (value, _("Color"), "white")
     description (_("The color to paint over the input"))
     ui_meta     ("role", "color-primary")
 
@@ -116,9 +116,9 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   gaus = gegl_node_new_child (gegl,
-                                  "operation", "gegl:gaussian-blur", 
+                                  "operation", "gegl:gaussian-blur",
                                          "clip-extent", FALSE,
-                                         "abyss-policy", 0,   
+                                         "abyss-policy", 0,
                                   NULL);
 
  opacity = gegl_node_new_child (gegl,
