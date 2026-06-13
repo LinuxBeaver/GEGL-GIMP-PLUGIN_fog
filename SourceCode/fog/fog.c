@@ -18,8 +18,8 @@
  */
 
 /*
-GEGL Graph to test without installing. I DON'T KNOW HOW TO MAKE IT FULL SCREEN IN GRAPH MODE. I think Gimp is instructing gegl:plasma to render to canvas size.
-The plugin doesn't have this problem.
+GEGL Graph to test without installing. I DONꞌT KNOW HOW TO MAKE IT FULL SCREEN IN GRAPH MODE. I think Gimp is instructing gegl:plasma to render to canvas size.
+The plugin doesnꞌt have this problem.
 
 
 plasma
